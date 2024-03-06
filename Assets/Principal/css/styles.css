@@ -1,0 +1,550 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot?v=4.1.0');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+
+.breadcrumb {
+    background-color: rgba(0, 0, 0, .03);
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+#content {
+    margin-bottom: 25px;
+}
+
+.adsbygoogle {
+    margin-bottom: 15px;
+}
+
+.footer-content {
+    margin-top: 20px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, .5);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+.items {
+    margin-top: 20px;
+    padding: 0px;
+    list-style: none;
+}
+
+.item {
+    border: 1px solid #CCCCCC;
+    padding: 15px;
+    padding: 10px;
+    height: 390px;
+    margin-bottom: 20px;
+}
+
+.item h3 {
+    font-size: 18px;
+    text-align: center;
+    height: 45px;
+}
+
+.item .price {
+    color: #ff0000;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.item .description_short {
+    text-align: center;
+    height: 105px;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+    z-index: 1500;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important;
+}
+
+#datosExtras {
+    display: none;
+    /* Inicialmente oculto */
+    border: 1px solid #ddd;
+    padding: 10px;
+    white-space: nowrap;
+    /* Para forzar todo en una línea */
+}
+
+.card-headers {
+    background-color: black;
+    height: 60px;
+}
+
+.card-headers .row {
+    text-align: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.card-headers img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.card-headers .icon {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+
+.card-body1 {
+    text-align: center;
+
+}
+
+.tablas thead {
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+}
+
+
+.tablas i {
+    font-size: 18px;
+}
+
+.icon_P {
+    align-items: center;
+    text-align: center;
+}
+
+
+.card-footers {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.expandir {
+    background-color: black;
+    width: 30px;
+    height: 30px;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.expandir:hover {
+    background-color: #CCCCCC;
+
+}
+
+
+.container2 {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.card-headers {
+    height: 80px;
+}
+
+div.row.iconos-s {
+    margin-top: 15px;
+}
+
+.centrar-iconos i {
+    font-size: 30px;
+}
+
+.titulo-cuadro {
+    font-size: 30px;
+    margin: 0 15px 0 15px;
+}
+
+input.form-control {
+    text-align: center;
+}
+
+
+.subtitulo-cuadro {
+    font-size: 30px;
+}
+
+.text-title {
+    font-size: 21px;
+}
+
+.tablas i {
+    margin-top: 8px;
+    font-size: 28px;
+}
+
+
+
+.tablas .inputmodificado {
+    margin: 0 auto;
+        text-align: center;
+
+}
+.zoom {
+    width: 90px;
+}
+.zoom2 {
+    width: 110px;
+}
+.tabla .text-secondary {
+    margin-top: 5px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.tabla .text-secondary span {
+    font-size: 17px;
+}
+
+.arrow-up {
+    background-color: black;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.arrow-up i {
+    font-size: 16px;
+    color: white;
+}
+
+.redondo {
+
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.redondo i {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+}
+
+.redondo:hover {
+    color: black;
+}
+
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+
+    to {
+        opacity: 1;
+        height: auto;
+    }
+}
+
+.animacion-div {
+    animation: fade 0.3s ease-in-out;
+}
+
+@media (max-width:320px) {
+
+    div.row.iconos-s {
+        margin-top: 15px;
+    }
+
+    .titulo-cuadro {
+        font-size: 22px;
+        margin: 0 20px 0 20px;
+    }
+
+    input.form-control {
+        text-align: center;
+    }
+
+    .subtitulo-cuadro {
+        font-size: 22px;
+    }
+
+    .text-title {
+        font-size: 16px;
+    }
+
+    .tablas i {
+        margin-top: 10px;
+        font-size: 23px;
+    }
+
+    .zoom {
+        width: 64px;
+    }
+    .zoom2 {
+        width: 81px;
+    }
+   
+    .card-body {
+        font-size: 14px;
+      
+      }
+    .tablas .inputmodificado {
+        margin: 0 auto;
+        text-align: center;
+
+    }
+
+    .input-size {
+        width: 70px;
+    }
+
+    .tabla .text-secondary {
+        font-weight: 600;
+        text-align: center;
+    }
+
+
+    .tabla .text-secondary span {
+        font-size: 14px;
+    }
+}
+
+@media (min-width:321px) and (max-width:767px) {
+
+    .container2 {
+        margin: 0 25px 0 25px;
+    }
+
+
+    .card-headers {
+        height: 80px;
+    }
+
+    input.form-control {
+        text-align: center;
+    }
+
+    div.row.iconos-s {
+        margin-top: 15px;
+    }
+
+    .centrar-iconos i {
+        font-size: 25px;
+    }
+
+    .titulo-cuadro {
+        font-size: 25px;
+        margin: 0 25px 0 25px;
+    }
+
+    .subtitulo-cuadro {
+        font-size: 25px;
+    }
+
+    .text-title {
+        font-size: 19px;
+    }
+
+    .tablas i {
+        margin-top: 8px;
+        font-size: 30px;
+    }
+
+
+    .tablas .inputmodificado {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .zoom {
+        width: 75px;
+    }
+    .zoom2 {
+        width: 95px;
+    }
+
+    .tabla .text-secondary {
+        margin-top: 10px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .card-body {
+        font-size: 17px;
+      
+      }
+    .tabla .text-secondary span {
+        font-size: 17px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+
+    .container2 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .card-headers {
+        height: 80px;
+    }
+
+    div.row.iconos-s {
+        margin-top: 12px;
+    }
+
+    input.form-control {
+        text-align: center;
+    }
+
+    .centrar-iconos i {
+        font-size: 20px;
+    }
+
+    .titulo-cuadro {
+        font-size: 25px;
+        margin: 0 25px 0 25px;
+    }
+
+    .subtitulo-cuadro {
+        font-size: 25px;
+    }
+
+    .text-title {
+        font-size: 21px;
+    }
+
+    .tablas i {
+        margin-top: 8px;
+        font-size: 30px;
+    }
+
+
+    .tablas .inputmodificado {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .zoom {
+        width: 80px;
+    }
+    .zoom2 {
+        width: 95px;
+    }
+    .tabla .text-secondary {
+        margin-top: 10px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .card-body {
+        font-size: 17px;
+      
+      }
+    .tabla .text-secondary span {
+        font-size: 17px;
+    }
+}
+
+
+@media (max-width:1024px) {}
