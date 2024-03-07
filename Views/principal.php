@@ -280,8 +280,11 @@ $data1 = json_decode($resultadoEX);
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
-    <div id="interfazGrafica" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0 "></script>
+
+    <div id="interfazGrafica" class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
@@ -291,22 +294,301 @@ $data1 = json_decode($resultadoEX);
                 </button>
             </div>
             <div class="modal-body">
-                <form id="frmRecetas">
-                    <div class="row">
-
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <button class="btn btn-danger" type="button" data-dismiss="modal">Atras</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+            <h1 align="center">Ripener Monitoring Data : Test </h1>
+            <canvas align ="center" id="graficaFinal" style="" width="600" height="400"></canvas>
             </div>
         </div>
     </div>
 </div>
 <script>
+const grafica1 = document.getElementById("graficaFinal");
+
+ function graficaMadurador1(info){
+
+    if (typeof w !== 'undefined') {w.destroy();}
+    setPoint =[];
+    returnAir = [];
+    tempSupply =[];
+    ambienteAir =[];
+    relativeHumidity =[];
+    evaporationCoil =[];
+    D_ethylene = [];
+    co2 = [];
+    sp_ethylene =[];
+    fecha =[];
+    inyeccionEtileno = [];
+ 
+    contador =0;
+
+    const datosInyeccion ={
+        label : " PowerState",
+        data : info.powerState,
+        backgroundColor: '#f7f2e2', // Color de fondo
+        borderColor: '#f7f2e2', // Color del borde
+        borderWidth: 1,
+        yAxisID : 'y1',
+        pointRadius: 0,
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4 ,
+        fill: true,  
+        datalabels: {
+            //display: 'false',  
+            labels: {
+                title: null
+              } 
+          },
+    }
+
+
+    const datosEvaporationCoil ={
+        label : " Evap",
+        data : info.evaporationCoil,
+        backgroundColor: '#95a5a6', // Color de fondo
+        borderColor: '#95a5a6', // Color del borde
+        borderWidth: 3,
+        yAxisID : 'y',
+        pointRadius: 0,
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4 ,
+        hidden :true,
+        datalabels: {
+            //display: 'false', 
+            labels: {
+                title: null
+              } 
+          },
+    }
+
+    const datosSetPoint ={
+        label : " SetPoint",
+        data : info.setPoint,
+        backgroundColor: '#f1c40f', // Color de fondo
+        borderColor: '#f1c40f', // Color del borde
+        borderWidth: 3,
+        yAxisID : 'y',
+        pointRadius: 0,
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4 ,
+        hidden :false,
+        datalabels: {
+            //display: 'false', 
+            labels: {
+                title: 'terrible'
+              }  
+          },
+    }
+    const datosreturnAir ={
+        label : " Return ",
+        data : info.returnAir,
+        backgroundColor: '#ec7063', // Color de fondo
+        borderColor: '#ec7063', // Color del borde
+        borderWidth: 3,// Ancho del borde
+        yAxisID : 'y',
+        pointRadius: 0,
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4,
+        hidden :false,
+        datalabels: {
+            display: 'auto',
+            clip :'true',
+            clamp :'true',
+            align: 'end',   
+          },
+    }
+    const datostempSupply ={
+        label : " Supply",
+        data : info.tempSupply,
+        backgroundColor: '#27ae60', // Color de fondo
+        borderColor: '#27ae60', // Color del borde
+        borderWidth: 3,// Ancho del borde
+        yAxisID : 'y',
+        pointRadius : 0,
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4,
+        hidden :false,
+        datalabels: {
+            display: 'auto',
+            clip :'true',
+            clamp :'true',
+            align: 'end',   
+          },
+    }
+    const datosambienteAir ={
+        label : " Ambient",
+        data : info.ambienteAir,
+        backgroundColor: '#9ccc65', // Color de fondo
+        borderColor: '#9ccc65', // Color del borde
+        borderWidth: 3,// Ancho del borde
+        yAxisID : 'y',
+        pointRadius : 0,
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4,
+        hidden :false,
+        datalabels: {
+            display: 'auto',
+            clip :'true',
+            clamp :'true',
+            align: 'end',   
+          },
+    }
+    const datorelativeHumidity ={
+        label : "Humidity",
+        data : info.relativeHumidity,
+        backgroundColor: '#e4c1f4', // Color de fondo
+        borderColor: '#e4c1f4', // Color del borde4476c6
+        borderWidth: 3,// Ancho del borde
+        yAxisID : 'y1',
+        pointRadius : 0,
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4,
+        hidden :false,
+        datalabels: {
+            display: 'auto',
+            clip :'true',
+            clamp :'true',
+            align: 'end',   
+          },
+    }
+
+
+    console.time('loop');
+    w = new Chart(grafica1, {
+        type: 'line',// Tipo de gráfica
+        data: {
+            labels: info.fecha,
+            datasets: [
+                datosreturnAir,
+                    datorelativeHumidity,
+                    datosambienteAir,
+                    datostempSupply,
+                    datosEvaporationCoil, 
+                    datosSetPoint ,
+                    datosInyeccion 
+        
+                    // Aquí más datos...
+            ]
+        },
+        options: {
+            animation: {
+
+              },
+            responsive : true,
+            backgroundColor: '#fff',
+            interaction :{
+                mode : 'index',
+                intersect :false,
+            },
+            stacked :false,
+            scales: {
+                y: {
+                    position: 'left',
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Temperature (C°)',
+                        color: '#1a2c4e',
+                        font: {     
+                            size: 20,
+                            style: 'normal',
+                            lineHeight: 1.2
+                        },
+                        padding: {top: 30, left: 0, right: 0, bottom: 0}
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 60
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Percentage (%)',
+                        color: '#1a2c4e',
+                        font: {                      
+                            size: 20,
+                            style: 'normal',
+                            lineHeight: 1.2
+                        },
+                        padding: {top: 30, left: 0, right: 0, bottom: 0}
+                    },
+                    grid: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                },
+            },
+            plugins: {
+                datalabels: {
+                    color: function(context) {
+                      return context.dataset.backgroundColor;
+                    },
+                    font: {
+                      weight: 'bold'
+                    },          
+                    padding: 6,
+    
+                  },
+                title: {
+                    display: true,
+                    text: '',
+                    color: '#1a2c4e',
+                    font: {                        
+                        size: 35,
+                        style: 'normal',
+                        lineHeight: 1.2
+                    },
+                    padding: {top: 30, left: 0, right: 0, bottom: 0}
+                },
+                zoom: {
+                    pan :{
+                        enabled :true,
+                        mode: 'x',
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        pinch: {
+                            enabled: true
+                        },
+                        mode: 'x',
+                        drag :{
+                            enabled: false,
+                        },
+                        scaleMode :'x',
+                    }
+                },
+                customCanvasBackgroundColor : {
+                    color :'#fff',
+                },
+                legend : {
+                    position :'top',
+                    align : 'center',
+                    labels : {
+                        boxWidth :20 ,
+                        boxHeight : 20,
+                        color :'#1a2c4e',
+                        padding :15 ,
+                        textAlign : 'left',
+                        font: {
+                            size: 12,
+                            style: 'normal',
+                            lineHeight: 1.2
+                          },
+                        title : {
+                            text :'Datos Graficados:',
+                        },
+                    },
+                },
+            }           
+        },
+       // plugins : [plugin,ChartDataLabels],
+    });    
+    console.timeEnd('loop');
+}
 
 function abrirGrafica(codigo) {
     //document.getElementById("title").textContent = "Actualizar Receta";
@@ -318,9 +600,10 @@ function abrirGrafica(codigo) {
     http.send();
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            const res = this.responseText;
+            //const res = this.responseText;
 
-           // const res = JSON.parse(this.responseText);
+           const res = JSON.parse(this.responseText);
+           //graficaMadurador1(res, codigo);
             /*
             document.getElementById("id").value = res.id;
             document.getElementById("codigo_receta").value = res.codigo_receta;
@@ -328,6 +611,10 @@ function abrirGrafica(codigo) {
             document.getElementById("descripcion_receta").value = res.descripcion;                
             */
            console.log(res);
+           //console.log(codigo);
+           //terrible =res[codigo];
+           //console.log(terrible);
+            graficaMadurador1(res);
             $("#interfazGrafica").modal("show");
         }
     }
