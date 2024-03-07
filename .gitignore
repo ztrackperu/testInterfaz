@@ -1,1 +1,2 @@
-/config/config.php
+#aqui ignoramos el archivo config.php
+config/config.php
