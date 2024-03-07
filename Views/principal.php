@@ -1,19 +1,38 @@
 
 <?php
 
-//echo "ola".json_decode($data);
+//echo $data;
+$sql ="ola z";
 
-//echo var_dump($data);
-//$trama = json_encode($data);
-//echo $trama;
+//$url1 = "http://148.102.22.93:2531/api/ot/";
+$url1 = "http://161.132.206.104/apizgroup/datamaduradores/";
+//$url1 = "http://localhost:8080/apizgroup/dataMaduradores/";
+$datos = [
+    "sql" => $sql,
+];
+$opciones = array(
+    "http" => array(
+        "header" => "Content-type: application/json\r\n",
+        "method" => "POST",
+        "content" => json_encode($datos), # Agregar el contenido definido antes
+    ),
+);
+# Preparar petición
+$contexto = stream_context_create($opciones);
+
+$resultadoEX = file_get_contents($url1, false, $contexto);
 /*
-foreach($data as $contenedor){
-echo $contenedor['nombre_contenedor'];
+if ($resultadoEX === false) {
+    echo "Error haciendo petición";
+    exit;
+}else{
+    echo "peticion ok";
 }
 */
-//echo $data;
+//$data1 = json_decode($data);
+$data1 = json_decode($resultadoEX);
+//echo $resultadoEX;
 
-$data1 = json_decode($data);
 ?>
 
 
@@ -110,7 +129,7 @@ $data1 = json_decode($data);
                         <h5 class="card-title py-2 subtitulo-cuadro">ALIAS: Nombre perzonalizado</h5>
                         <div class="d-flex justify-content-center align-items-center centrar-iconos">
                             <div class="btn-group justify-content-between align-items-center">
-                                <button type="button" class="btn btn-sm btn-outline-primary">
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="abrirGrafica('<?= $row->nombre_contenedor ?>')">
                                     <i class="fa-solid fa-chart-line"></i>
                                 </button>
                                 <button type="button" class="btn btn-sm btn-outline-secondary">
@@ -262,7 +281,59 @@ $data1 = json_decode($data);
 
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 
+    <div id="interfazGrafica" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title text-white" id="title">Data Dispositivo</h5>
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmRecetas">
+                    <div class="row">
 
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button class="btn btn-danger" type="button" data-dismiss="modal">Atras</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+function abrirGrafica(codigo) {
+    //document.getElementById("title").textContent = "Actualizar Receta";
+    //document.getElementById("btnAccion").textContent = "Modificar";
+
+    const url = "http://161.132.206.104/apizgroup/data12horas/index.php?data=" + codigo;
+    const http = new XMLHttpRequest();
+    http.open("GET", url, true);
+    http.send();
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            const res = this.responseText;
+
+           // const res = JSON.parse(this.responseText);
+            /*
+            document.getElementById("id").value = res.id;
+            document.getElementById("codigo_receta").value = res.codigo_receta;
+            document.getElementById("nombre_receta").value = res.nombre_receta;
+            document.getElementById("descripcion_receta").value = res.descripcion;                
+            */
+           console.log(res);
+            $("#interfazGrafica").modal("show");
+        }
+    }
+}
+
+</script>
 </body>
 
 </html>
