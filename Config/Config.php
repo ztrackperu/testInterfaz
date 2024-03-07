@@ -4,7 +4,7 @@ const base_url = "/testinterfaz/";
 const host = "localhost:3307";
 const user = "root";
 const pass = "Lpmp2018";
-const db = "interfazter";
+const db = "interfaz";
 const charset = "charset=utf8";
 
 ?>

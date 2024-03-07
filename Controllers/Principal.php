@@ -8,7 +8,7 @@ class Principal extends Controller{
     {
         $data = $this->model->getContenedores();
         $data1 = json_encode($data,JSON_UNESCAPED_UNICODE);
-        $this->views->getView($this, "principal",$data);
+        $this->views->getView($this, "principal",$data1);
         //echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 
