@@ -294,7 +294,7 @@ $data1 = json_decode($resultadoEX);
                 </button>
             </div>
             <div class="modal-body">
-            <h1 align="center">Ripener Monitoring Data : Test </h1>
+            <h1 align="center" id="tituloGrafica">Hola peru</h1>
             <canvas align ="center" id="graficaFinal" style="" width="600" height="400"></canvas>
             </div>
         </div>
@@ -302,6 +302,8 @@ $data1 = json_decode($resultadoEX);
 </div>
 <script>
 const grafica1 = document.getElementById("graficaFinal");
+const tituloGrafica = document.getElementById("tituloGrafica");
+
 
  function graficaMadurador1(info){
 
@@ -495,7 +497,7 @@ const grafica1 = document.getElementById("graficaFinal");
                         padding: {top: 30, left: 0, right: 0, bottom: 0}
                     },
                     suggestedMin: 0,
-                    suggestedMax: 60
+                    suggestedMax: 30
                 },
                 y1: {
                     type: 'linear',
@@ -615,6 +617,8 @@ function abrirGrafica(codigo) {
            //terrible =res[codigo];
            //console.log(terrible);
             graficaMadurador1(res);
+            console.log(tituloGrafica.textContent);
+            tituloGrafica.textContent = "Monitoreo de Dispositivo : "+res.device;
             $("#interfazGrafica").modal("show");
         }
     }
@@ -624,3 +628,4 @@ function abrirGrafica(codigo) {
 </body>
 
 </html>
+
