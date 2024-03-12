@@ -254,13 +254,29 @@ $data1 = json_decode($resultadoEX);
         </section>
 
 
-<div class="album py-5 bg-body-tertiary">
-    <div class="container2">
+        <div class="container2"> 
+	<div id="myCarousel" class="carousel slide container2" data-bs-touch="true" data-bs-interval="false">
+	  <div class="carousel-inner w-100" role="listbox">
+		<div class="carousel-item">
+		  <div class="col-sm-6 col-md-6 col-lg-4 mb-4">
+			  <div class="card">
+          <div class="card card-body"><!-- <img class="img-fluid" src="http://placehold.it/380?text=1">--></div>
+        </div>
+      </div>
+    </div>
 
 
-    
-        <div class="row">
-            <?php foreach($data1 as $row){ ?>
+    <?php
+		$i=0;
+	  foreach($data1 as $row){
+		$activo='carousel-item';
+		if($i == 0){
+			$activo ='carousel-item active';
+		}else{
+			$activo='carousel-item';
+		}	
+	  ?>
+		<div class="<?= $activo; ?>">
             <div class="col-sm-6 col-md-6 col-lg-4 mb-4">
                 <div class="card">
                     <div class="card-headers" style="color: black ;height: 80px;">
@@ -396,18 +412,25 @@ $data1 = json_decode($resultadoEX);
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php } ?>
-                <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                <div class="col-12">
-                    <p class="float-end mb-1 arrow-up">
-                        <a href="#"><i class="fa-solid fa-arrow-up"></i></a>
-                    </p>
-                </div>
+
             </div>
-        </div>
+		  </div>
+		</div>
+		<?php 
+		$i++;
+		}
+		?>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	  </button>
+	</div>
+</div>
     
 
 
@@ -416,7 +439,6 @@ $data1 = json_decode($resultadoEX);
     <footer class="text-body-secondary py-5">
         <div class="container justify-content-center">
 
-            <h1>control</h1>
 
         </div>
     </footer>
@@ -426,6 +448,24 @@ $data1 = json_decode($resultadoEX);
             $("#power").addClass("color:red");
 
         });
+
+        $('.carousel .carousel-item').each(function(){
+    var minPerSlide = 3;
+    var next = $(this).next();
+    if (!next.length) {
+    next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (var i=0;i<minPerSlide;i++) {
+        next=next.next();
+        if (!next.length) {
+        	next = $(this).siblings(':first');
+      	}
+        
+        next.children(':first-child').clone().appendTo($(this));
+      }
+});
     </script>
     <script src="views/assets/js/script.js"></script>
     <script src="views/assets/js/MostarTablas.js"></script>
@@ -437,7 +477,7 @@ $data1 = json_decode($resultadoEX);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0 "></script>
-
+</div>
     <div id="interfazGrafica" class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

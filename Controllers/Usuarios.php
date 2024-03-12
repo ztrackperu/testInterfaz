@@ -32,4 +32,6 @@ class Usuarios extends Controller{
     }
 
 
+
+
 }
