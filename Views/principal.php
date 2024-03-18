@@ -164,7 +164,7 @@ $data1 = json_decode($resultadoEX);
   .carousel-inner .carousel-item-right.active,
   .carousel-inner .carousel-item-next,
   .carousel-item-next:not(.carousel-item-start) {
-    transform: translateX(25%) !important;
+    transform: translateX(33.3%) !important;
 
   }
 
@@ -172,7 +172,7 @@ $data1 = json_decode($resultadoEX);
   .carousel-item-prev:not(.carousel-item-end),
   .active.carousel-item-start,
   .carousel-item-prev:not(.carousel-item-end) {
-    transform: translateX(-25%) !important;
+    transform: translateX(-33.3%) !important;
 
   }
 
@@ -182,7 +182,7 @@ $data1 = json_decode($resultadoEX);
 
   .carousel-inner .carousel-item-prev,
   .carousel-item-prev:not(.carousel-item-end) {
-    transform: translateX(-25%) !important;
+    transform: translateX(-33.3%) !important;
 
   }
 } 
@@ -472,8 +472,8 @@ $data1 = json_decode($resultadoEX);
 
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0 "></script>
 </div>
-    <div id="interfazGrafica" class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div id="interfazGrafica" class="modal modal-md fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title text-white" id="title">Data Dispositivo</h5>
